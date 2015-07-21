@@ -1,5 +1,12 @@
 # Camel Skeleton
 
+## Prerequisites
+
+- Java 1.7+
+- Linux / OS X
+
+It should also work on Windows, but I don't have a machine to test it. I also don't know if the folder listener works properly. If you experience any problems and know how to fix it, let me know!
+
 ##tl;dr
 
 - `git clone git@github.com:Lunatic666/camelskeleton.git`
