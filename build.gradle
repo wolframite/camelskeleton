@@ -1,0 +1,50 @@
+apply plugin: 'java'
+apply plugin: 'groovy'
+apply plugin: 'application'
+
+mainClassName = "net.wolframite.camelskeleton.Start"
+
+sourceSets {
+	main {
+		groovy    { srcDir 'src/main/groovy' }
+		java      { srcDir 'src/main/java' }
+		resources { srcDir 'src/main/resources' }
+	}
+
+	test {
+		groovy    { srcDir 'src/test/groovy' }
+		java      { srcDir 'src/test/java' }
+		resources { srcDir 'src/test/resources' }
+	}
+}
+
+repositories {
+	jcenter()
+	mavenCentral()
+}
+
+dependencies {
+	compile 'log4j:log4j:1.2.17'
+	compile 'commons-io:commons-io:2.4'
+	compile 'org.slf4j:slf4j-api:1.7.10'
+	compile 'org.slf4j:slf4j-log4j12:1.7.10'
+	compile 'commons-codec:commons-codec:1.10'
+	compile 'org.apache.httpcomponents:httpmime:4.5'
+	
+	compile 'org.apache.camel:camel-jmx:2.15.2'
+	compile 'org.apache.camel:camel-core:2.15.2'
+	compile 'org.apache.camel:camel-test:2.15.2'
+	compile 'org.apache.camel:camel-jdbc:2.15.2'
+	compile 'org.apache.camel:camel-http4:2.15.2'
+	compile 'org.apache.camel:camel-jetty:2.15.2'
+	compile 'org.apache.camel:camel-spring:2.15.2'
+	compile 'org.apache.camel:camel-stream:2.15.2'
+	compile 'org.apache.camel:camel-jackson:2.15.2'
+	compile 'org.apache.camel:camel-netty4-http:2.15.2'
+
+	compile 'org.codehaus.groovy:groovy-all:2.4.3'
+}
+
+run {
+	systemProperties = System.getProperties()
+}
