@@ -17,7 +17,8 @@ class DemoRoute extends ConfigRouteBuilder {
 
 	@Override
 	public void configure() {
-		from(config.route.Demo.from).routeId(getClass().getSimpleName())
+		from(config.route.Demo.from)
+			.routeId(getClass().getSimpleName())
 			.convertBodyTo(String.class)
 			.wireTap(config.route.Demo.wireTap)
 			.process(demoProcessor).id(config.route.Demo.names.demoProcessor)

@@ -30,7 +30,7 @@ class CamelSkeleton {
 
 		config.route.name.each {
 			try {
-				constructor = Class.forName("net.wolframite.camelskeleton.route." + it).getConstructor(ConfigObject.class)
+				constructor = Class.forName(config.route.routePackage + "." + it).getConstructor(ConfigObject.class)
 				context.addRoutes(constructor.newInstance(config))
 			} catch (Exception ex) {
 				log.error(String.format("Route '%s' failed: %s", it, ex.getMessage()), ex)

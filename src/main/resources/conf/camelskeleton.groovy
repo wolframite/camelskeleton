@@ -1,5 +1,6 @@
+route.routePackage = 'net.wolframite.camelskeleton.route'
 route.name = [
-	 'DemoRoute'
+	'DemoRoute'
 ]
 
 route.Demo.from = "file://" + System.getProperty("user.dir") + "/demo?autoCreate=true&delete=true"
