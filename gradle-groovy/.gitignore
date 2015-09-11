@@ -1,0 +1,20 @@
+# Eclipse stuff
+.classpath
+.project
+.settings
+
+# Gradle stuff
+.gradle
+bin
+build
+
+# Java default from Github
+*.class
+
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+
+# Package Files #
+*.jar
+*.war
+*.ear
