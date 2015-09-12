@@ -1,11 +1,8 @@
-package net.wolframite.camelskeleton.processor
+package io.m18.skel.processor
 
-import org.slf4j.*
 import groovy.json.*
 import org.apache.camel.*
-import org.apache.log4j.*
 import groovy.util.logging.*
-import groovy.util.ConfigObject
 
 @Log4j
 /**

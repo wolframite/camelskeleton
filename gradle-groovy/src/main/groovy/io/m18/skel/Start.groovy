@@ -1,17 +1,16 @@
-package net.wolframite.camelskeleton
+package io.m18.skel
 
 import org.apache.log4j.*
 import groovy.util.logging.*
-import groovy.util.ConfigObject
 
 @Log4j
 /**
- * @author Wolfram Huesken <woh@wolframite.net>
+ * @author Wolfram Huesken <woh@m18.io>
  */
 class Start {
 
-	public static final String LOGGER_CONFIG_PATH = '.camelskeleton/logger.groovy'
-	public static final String MAIN_CONFIG_PATH = '.camelskeleton/camelskeleton.groovy'
+	public static final String LOGGER_CONFIG_PATH = '.camelskel/logger.groovy'
+	public static final String MAIN_CONFIG_PATH = '.camelskel/skel.groovy'
 
 	static main(args) {
 		initLogger()
@@ -53,6 +52,6 @@ class Start {
 			return mainConfigPath.toURI().toURL()
 		}
 
-		getClass().getResource('/conf/camelskeleton.groovy')
+		getClass().getResource('/conf/skel.groovy')
 	}
 }

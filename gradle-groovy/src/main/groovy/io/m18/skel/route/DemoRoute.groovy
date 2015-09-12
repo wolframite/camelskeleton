@@ -1,7 +1,7 @@
-package net.wolframite.camelskeleton.route
+package io.m18.skel.route
 
-import net.wolframite.camelskeleton.processor.*
-import net.wolframite.camel.ConfigRouteBuilder
+import io.m18.camel.ConfigRouteBuilder
+import io.m18.skel.processor.DemoProcessor
 
 /**
  * @author Wolfram Huesken <woh@wolframite.net>
@@ -21,7 +21,7 @@ class DemoRoute extends ConfigRouteBuilder {
 			.routeId(getClass().getSimpleName())
 			.convertBodyTo(String.class)
 			.wireTap(config.route.Demo.wireTap)
-			.process(demoProcessor).id(config.route.Demo.names.demoProcessor)
-			.to(config.route.Demo.to).id(config.route.Demo.names.to)
+			.process(demoProcessor).id("MyProcessor")
+			.to(config.route.Demo.to).id("Logger")
 	}
 }

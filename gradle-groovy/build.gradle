@@ -1,7 +1,7 @@
 apply plugin: 'groovy'
 apply plugin: 'application'
 
-mainClassName = "net.wolframite.camelskeleton.Start"
+mainClassName = "io.m18.skel.Start"
 
 sourceSets {
 	main {

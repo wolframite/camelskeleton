@@ -1,13 +1,11 @@
-package net.wolframite.camelskeleton
+package io.m18.skel
 
-import org.apache.log4j.*
 import groovy.util.logging.*
-import groovy.util.ConfigObject
 import org.springframework.context.support.ClassPathXmlApplicationContext
 
 @Log4j
 /**
- * @author Wolfram Huesken <woh@wolframite.net>
+ * @author Wolfram Huesken <woh@m18.io>
  */
 class CamelSkeleton {
 
@@ -19,14 +17,11 @@ class CamelSkeleton {
 
 	/**
 	 * Init routes and add them to the context
-	 * @see conf/camelskeleton.conf
+	 * @see conf/skel.conf
 	 */
 	def launch() {
 		def constructor
 		def context = new ClassPathXmlApplicationContext('camel-context.xml').getBean('CamelSkeleton')
-
-		// The registry is encapsulated in a weird wrapper... Free the Registry!
-		context.setRegistry(context.getRegistry().getRegistry())
 
 		config.route.name.each {
 			try {
