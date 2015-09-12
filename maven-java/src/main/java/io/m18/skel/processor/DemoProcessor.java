@@ -7,7 +7,7 @@ import org.springframework.stereotype.*;
 /**
  * @author Wolfram Huesken <woh@m18.io>
  */
-@org.springframework.stereotype.Component
+@Component
 public class DemoProcessor implements Processor {
 
 	@Override
