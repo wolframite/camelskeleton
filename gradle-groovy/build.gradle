@@ -15,6 +15,10 @@ repositories {
 	mavenCentral()
 }
 
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.7'
+}
+
 dependencies {
 	compile 'log4j:log4j:1.2.17'
 	compile 'commons-io:commons-io:2.4'
