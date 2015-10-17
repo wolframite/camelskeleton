@@ -1,0 +1,58 @@
+apply plugin: 'java'
+apply plugin: 'groovy'
+apply plugin: 'application'
+apply plugin: 'spring-boot'
+
+sourceCompatibility = 1.8
+mainClassName = "org.apache.camel.spring.Main"
+
+sourceSets {
+	main {
+		groovy    { srcDir 'src/main/groovy' }
+		resources { srcDir 'src/main/resources' }
+	}
+}
+
+buildscript {
+	repositories {
+		mavenCentral()
+	}
+
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:1.2.7.RELEASE")
+	}
+}
+
+repositories {
+	jcenter()
+	mavenCentral()
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.7'
+}
+
+dependencies {
+	compile 'org.springframework.boot:spring-boot-starter:1.2.7.RELEASE'
+	compile 'org.springframework.boot:spring-boot-gradle-plugin:1.2.7.RELEASE'
+
+	compile 'commons-io:commons-io:2.4'
+	compile 'commons-codec:commons-codec:1.10'
+	compile 'org.codehaus.groovy:groovy-all:2.4.5'
+	compile 'org.apache.httpcomponents:httpmime:4.5'
+
+	compile 'org.apache.camel:camel-jmx:2.16.0'
+	compile 'org.apache.camel:camel-core:2.16.0'
+	compile 'org.apache.camel:camel-test:2.16.0'
+	compile 'org.apache.camel:camel-jdbc:2.16.0'
+	compile 'org.apache.camel:camel-http4:2.16.0'
+	compile 'org.apache.camel:camel-jetty:2.16.0'
+	compile 'org.apache.camel:camel-spring:2.16.0'
+	compile 'org.apache.camel:camel-stream:2.16.0'
+	compile 'org.apache.camel:camel-jackson:2.16.0'
+	compile 'org.apache.camel:camel-netty4-http:2.16.0'
+}
+
+run {
+	systemProperties = System.getProperties()
+}
