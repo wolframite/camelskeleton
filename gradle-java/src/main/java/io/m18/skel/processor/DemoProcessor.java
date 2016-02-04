@@ -1,6 +1,7 @@
 package io.m18.skel.processor;
 
 import java.util.*;
+
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
 import org.springframework.stereotype.*;

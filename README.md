@@ -6,11 +6,8 @@ out the examples on the page, rather than searching for boilerplate-snippets on 
 
 ## Two approaches
 
-- Maven as build program and Java as main language
-- Gradle as build program and Groovy as main language
-
-Using the former makes it easier to try the examples on the official page, the latter is a bit more
-flexible and I prefer Groovy because I can get stuff done with less code and less fuss
+- Maven to build the project
+- Gradle to build the project
 
 ## What is this camel?
 
