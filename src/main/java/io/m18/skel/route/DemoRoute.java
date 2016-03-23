@@ -44,6 +44,7 @@ public class DemoRoute extends RouteBuilder {
             .wireTap(wireTap)
             .process(demoProcessor).id("MyProcessor")
             .marshal().json(JsonLibrary.Gson)
+            .convertBodyTo(String.class)
             .to(demoLogger);
     }
 
