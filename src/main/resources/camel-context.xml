@@ -6,7 +6,7 @@
            http://www.springframework.org/schema/beans
            http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
 
-    <camelContext id="camel" xmlns="http://camel.apache.org/schema/spring">
+    <camelContext id="camel" xmlns="http://camel.apache.org/schema/spring" streamCache="true">
         <propertyPlaceholder id="jmx" location="jmx.properties" />
         <jmxAgent
             disabled="{{jmx.disabled}}"
@@ -15,12 +15,12 @@
             usePlatformMBeanServer="true"
             connectorPort="{{jmx.port}}" />
 
-        <routeBuilder ref="imageSync" />
+        <routeBuilder ref="demoRoute" />
     </camelContext>
 
     <!-- Slack integration -->
     <bean id="slack" class="org.apache.camel.component.slack.SlackComponent">
-        <property name="webhookUrl" value="${scruffyHook}"/>
+        <property name="webhookUrl" value="${slackHook}"/>
     </bean>
 
     <!-- Database connections -->
@@ -31,22 +31,24 @@
         <property name="password" value="${datasource.primary.password}" />
     </bean>
 
+    <!--
     <bean id="otherDataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="${datasource.other.driverClassName}" />
         <property name="url" value="${datasource.other.url}" />
         <property name="username" value="${datasource.other.username}" />
         <property name="password" value="${datasource.other.password}" />
     </bean>
+    -->
 
     <!-- Spring stuffs - without that the whole program doesn't work when packaged -->
     <bean id="myPUManager" class="org.springframework.orm.jpa.persistenceunit.DefaultPersistenceUnitManager">
-        <property name="defaultDataSource" ref="sgDataSource" />
+        <property name="defaultDataSource" ref="primaryDataSource" />
         <property name="defaultPersistenceUnitName" value="myPU" />
         <property name="defaultPersistenceUnitRootLocation" value="file:///tmp/whatever" />
     </bean>
 
     <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
-        <property name="dataSource" ref="sgDataSource" />
+        <property name="dataSource" ref="primaryDataSource" />
         <property name="persistenceUnitManager" ref="myPUManager" />
         <property name="persistenceUnitName" value="myPU" />
         <property name="packagesToScan" value="io.m18.skel.*" />
@@ -56,6 +58,7 @@
     <bean id="jpaVendorAdapter" class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
         <property name="showSql" value="true"/>
         <property name="generateDdl" value="true" />
-        <property name="databasePlatform" value="org.hibernate.dialect.MySQL5InnoDBDialect" />
+        <!--<property name="databasePlatform" value="org.hibernate.dialect.MySQL5InnoDBDialect" />-->
+        <property name="databasePlatform" value="org.hibernate.dialect.H2Dialect" />
     </bean>
 </beans>

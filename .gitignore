@@ -22,3 +22,6 @@ build
 
 # Demo config file
 src/main/resources/application.yml
+
+# demo folder
+demo

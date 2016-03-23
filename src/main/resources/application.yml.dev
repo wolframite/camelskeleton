@@ -7,9 +7,9 @@ spring:
 # Database config section
 datasource:
   primary:
-    url: "jdbc:mysql://localhost/mydatabase"
-    driverClassName: "com.mysql.jdbc.Driver"
-    username: root
+    url: "jdbc:h2:mem:test;DB_CLOSE_DELAY=-1"
+    driverClassName: "org.h2.Driver"
+    username: sa
     password:
 
   other:

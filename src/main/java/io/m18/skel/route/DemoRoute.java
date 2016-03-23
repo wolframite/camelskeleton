@@ -22,7 +22,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
  */
 @Component
 @Profile({"dev"})
-@ConfigurationProperties(prefix="route.DemoRoute")
+@ConfigurationProperties(prefix="routes.DemoRoute")
 public class DemoRoute extends RouteBuilder {
 
     @Getter @Setter
