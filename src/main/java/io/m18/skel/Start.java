@@ -7,12 +7,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 /**
  * @author Wolfram Huesken <woh@m18.io>
  */
-@Configuration
 @SpringBootApplication
 @ImportResource("classpath:camel-context.xml")
 public class Start {
 
-	public static void main(String[] args) {
+    public static void main(String[] args) {
 		SpringApplication.run(Start.class, args);
 	}
 

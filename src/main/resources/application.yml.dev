@@ -1,0 +1,29 @@
+---
+# Annotate files with profiles to load them for the designated environment
+spring:
+  profiles:
+    active: dev
+
+# Database config section
+datasource:
+  primary:
+    url: "jdbc:mysql://localhost/mydatabase"
+    driverClassName: "com.mysql.jdbc.Driver"
+    username: root
+    password:
+
+  other:
+    url: "jdbc:mysql://localhost/mydatabase"
+    driverClassName: "com.mysql.jdbc.Driver"
+    username: root
+    password:
+
+# Configure slack notifications
+slackHook: "https://hooks.slack.com/services/xxxxxxxxx/yyyyyyyyyy/zzzzzzzzzzzzzzzzzzzzzzzz"
+
+routes:
+  # Replace me with a real route!
+  DemoRoute:
+    demoFolder: "file:demo?autoCreate=true&delete=true"
+    demoLogger: "log:io.m18.skel.DemoRoute?level=INFO"
+    wireTap: "log:io.m18.skel.WireTap?level=DEBUG"

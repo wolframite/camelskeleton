@@ -19,3 +19,6 @@ build
 # Package Files #
 *.war
 *.ear
+
+# Demo config file
+src/main/resources/application.yml
