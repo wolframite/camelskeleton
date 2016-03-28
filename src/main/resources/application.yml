@@ -27,3 +27,4 @@ routes:
     demoFolder: "file:demo?autoCreate=true&delete=true"
     demoLogger: "log:io.m18.skel.DemoRoute?level=INFO"
     wireTap: "log:io.m18.skel.WireTap?level=DEBUG"
+    webserver: "undertow:http://localhost:8182/hellocamel"

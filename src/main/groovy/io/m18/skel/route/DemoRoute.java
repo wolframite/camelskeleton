@@ -38,8 +38,8 @@ public class DemoRoute extends RouteBuilder {
     @Getter @Setter
     private String demoLogger;
 
-    @Autowired
-    private DemoProcessor demoProcessor;
+    @Getter @Setter
+    private String webserver;
 
     @Autowired
     private DemoProcessorGroovy demoProcessorGroovy;
@@ -54,11 +54,7 @@ public class DemoRoute extends RouteBuilder {
             .convertBodyTo(String.class)
             .to(demoLogger);
 
-        from("jetty:http://localhost:8181/hellocamel").startupOrder(20)
-            .convertBodyTo(String.class)
-            .to("file:demo");
-
-        from("undertow:http://localhost:8182/hellocamel").startupOrder(21)
+        from(webserver).startupOrder(21)
             .convertBodyTo(String.class)
             .to("file:demo");
 
