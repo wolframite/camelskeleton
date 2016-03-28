@@ -16,10 +16,8 @@ public class DemoProcessor implements Processor {
     public void process(Exchange exchange) throws Exception {
         String payload = exchange.getIn().getBody(String.class);
         Map<String, String> data = new HashMap<>();
-
         data.put("content", payload);
         data.put("timestamp", new Date().toString());
-
         exchange.getIn().setBody(data, Map.class);
     }
 

@@ -1,11 +1,15 @@
 package io.m18.skel.route;
 
+import io.m18.skel.processor.DemoProcessorGroovy;
 import lombok.*;
 import io.m18.skel.processor.DemoProcessor;
+import org.apache.camel.Exchange;
+import org.apache.camel.LoggingLevel;
+import org.apache.camel.Processor;
 import org.apache.camel.builder.RouteBuilder;
-import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 import org.apache.camel.model.dataformat.JsonLibrary;
+import org.springframework.context.annotation.Profile;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
@@ -37,15 +41,27 @@ public class DemoRoute extends RouteBuilder {
     @Autowired
     private DemoProcessor demoProcessor;
 
+    @Autowired
+    private DemoProcessorGroovy demoProcessorGroovy;
+
     @Override
     public void configure() {
-        from(demoFolder).routeId(getClass().getSimpleName())
+        from(demoFolder).routeId(getClass().getSimpleName()).startupOrder(10)
             .convertBodyTo(String.class)
             .wireTap(wireTap)
-            .process(demoProcessor).id("MyProcessor")
+            .process(demoProcessorGroovy)
             .marshal().json(JsonLibrary.Gson)
             .convertBodyTo(String.class)
             .to(demoLogger);
+
+        from("jetty:http://localhost:8181/hellocamel").startupOrder(20)
+            .convertBodyTo(String.class)
+            .to("file:demo");
+
+        from("undertow:http://localhost:8182/hellocamel").startupOrder(21)
+            .convertBodyTo(String.class)
+            .to("file:demo");
+
     }
 
 }
