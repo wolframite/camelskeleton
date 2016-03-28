@@ -1,13 +1,9 @@
 package io.m18.skel.route;
 
-import io.m18.skel.processor.DemoProcessorGroovy;
 import lombok.*;
-import io.m18.skel.processor.DemoProcessor;
-import org.apache.camel.Exchange;
-import org.apache.camel.LoggingLevel;
-import org.apache.camel.Processor;
 import org.apache.camel.builder.RouteBuilder;
 import org.springframework.stereotype.Component;
+import io.m18.skel.processor.DemoProcessorGroovy;
 import org.apache.camel.model.dataformat.JsonLibrary;
 import org.springframework.context.annotation.Profile;
 import org.springframework.beans.factory.annotation.Autowired;
